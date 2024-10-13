@@ -1,5 +1,8 @@
-const express = require('express');
-const router = express.Router();
+// routes/newsRoutes.js
+
+import { Router } from 'express';
+
+const router = Router();
 
 // Mock data for demonstration (replace this with your database logic)
 let newsItems = [];
@@ -17,4 +20,4 @@ router.post('/', (req, res) => {
     res.status(201).json(newItem); // Return the newly created news item
 });
 
-module.exports = router;
+export default router;

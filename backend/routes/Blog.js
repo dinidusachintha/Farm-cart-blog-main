@@ -1,11 +1,14 @@
-const router = require('express').Router();
-const Blog = require('../models/Blog'); // Blog model
-const multer = require('multer');
-const express = require('express');
-const cors = require('cors');
-const fs = require('fs');
-const path = require('path');
+// routes/blogRoutes.js
 
+import { Router } from 'express';
+import Blog from '../models/Blog.js'; // Blog model
+import multer from 'multer';
+import express from 'express';
+import cors from 'cors';
+import fs from 'fs';
+import path from 'path';
+
+const router = Router();
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -20,13 +23,13 @@ const storage = multer.diskStorage({
     }
 });
 
-var upload = multer({
+const upload = multer({
     storage: storage
 }).single("blogImage");
 
 // Function to delete an image if necessary
 function deleteImage(filePath) {
-    fs.unlink(path.join(__dirname, '..', 'BlogImages', filePath), (err) => {
+    fs.unlink(path.join(path.resolve(), 'BlogImages', filePath), (err) => {
         if (err) {
             console.error('Failed to delete the file:', err);
         }
@@ -129,6 +132,4 @@ router.delete('/delete/:id', async (req, res) => {
     }
 });
 
-
-
-module.exports = router;
+export default router;

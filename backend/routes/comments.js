@@ -1,6 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const Comment = require('../models/Comment');
+// routes/commentRoutes.js
+
+import { Router } from 'express';
+import Comment from '../models/Comment.js';
+
+const router = Router();
 
 // Route to add a new comment
 router.post('/add', async (req, res) => {
@@ -49,4 +52,4 @@ router.delete('/delete/:id', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

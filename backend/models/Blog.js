@@ -1,6 +1,6 @@
 // models/Blog.js
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const blogSchema = new mongoose.Schema({
     title: {
@@ -25,8 +25,7 @@ const blogSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-    
 });
 
 const Blog = mongoose.model('Blog', blogSchema);
-module.exports = Blog;
+export default Blog;
